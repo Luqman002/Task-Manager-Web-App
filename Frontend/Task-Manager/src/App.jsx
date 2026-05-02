@@ -29,7 +29,7 @@ export default function App() {
 
   const fetchTasks = () => {
     axios
-      .get("http://localhost:5000/api/tasks", {
+      .get("http://task-manager-web-app-production-08bb.up.railway.app/api/tasks", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setTasks(res.data))
@@ -42,7 +42,7 @@ export default function App() {
 
     axios
       .post(
-        "http://localhost:5000/api/tasks",
+        "http://task-manager-web-app-production-08bb.up.railway.app/api/tasks",
         { title },
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -56,7 +56,7 @@ export default function App() {
   // 🗑 DELETE TASK
   const deleteTask = (id) => {
     axios
-      .delete(`http://localhost:5000/api/tasks/${id}`, {
+      .delete(`http://task-manager-web-app-production-08bb.up.railway.app/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => fetchTasks());
@@ -66,7 +66,7 @@ export default function App() {
   const updateStatus = (id, status) => {
     axios
       .put(
-        `http://localhost:5000/api/tasks/${id}`,
+        `http://task-manager-web-app-production-08bb.up.railway.app/api/tasks/${id}`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -76,7 +76,7 @@ export default function App() {
   // 🔐 LOGIN
   const handleLogin = (email, password) => {
     axios
-      .post("http://localhost:5000/api/auth/login", { email, password })
+      .post("http://task-manager-web-app-production-08bb.up.railway.app/api/auth/login", { email, password })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         setUser({ token: res.data.token });
@@ -91,7 +91,7 @@ export default function App() {
   // 🆕 SIGNUP
   const handleSignup = (name, email, password) => {
   axios
-    .post("http://localhost:5000/api/auth/register", { // ✅ FIXED URL
+    .post("http://task-manager-web-app-production-08bb.up.railway.app/api/auth/register", { // ✅ FIXED URL
       name,
       email,
       password,
