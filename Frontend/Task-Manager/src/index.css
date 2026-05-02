@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+body {
+  font-family: 'Poppins', sans-serif;
+  --brakpoint-3xl: 1920px;
+  --color-primary:#1368EC;
+
+}
+
+@layer base{
+  html{
+    fornt-family:var(--font-display);
+  }
+  body{
+    background-color: #fcfbfc;
+    overflow-x: hidden;
+  }
+}
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global font */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f6f9;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar button {
+  padding: 8px 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Tasks */
+.task-list {
+  padding: 20px;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: white;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.todo { color: gray; }
+.in-progress { color: orange; }
+.done { color: green; }
