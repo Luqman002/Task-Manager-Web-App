@@ -21,7 +21,7 @@ export default function App() {
   const [authMode, setAuthMode] = useState(null); // "login" | "signup" | null
 
   const token = localStorage.getItem("token");
-
+  const API = "https://task-manager-web-app-production-08bb.up.railway.app";
   // 🔄 FETCH TASKS
   useEffect(() => {
     if (user) fetchTasks();
@@ -29,7 +29,7 @@ export default function App() {
 
   const fetchTasks = () => {
     axios
-      .get("http://task-manager-web-app-production-08bb.up.railway.app/api/tasks", {
+      .get(`${API}/api/tasks`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setTasks(res.data))
@@ -42,7 +42,7 @@ export default function App() {
 
     axios
       .post(
-        "http://task-manager-web-app-production-08bb.up.railway.app/api/tasks",
+        `${API}/api/tasks`,
         { title },
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -56,7 +56,7 @@ export default function App() {
   // 🗑 DELETE TASK
   const deleteTask = (id) => {
     axios
-      .delete(`http://task-manager-web-app-production-08bb.up.railway.app/api/tasks/${id}`, {
+      .delete(`${API}/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => fetchTasks());
@@ -66,7 +66,7 @@ export default function App() {
   const updateStatus = (id, status) => {
     axios
       .put(
-        `http://task-manager-web-app-production-08bb.up.railway.app/api/tasks/${id}`,
+        `${API}/api/tasks/${id}`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -76,7 +76,7 @@ export default function App() {
   // 🔐 LOGIN
   const handleLogin = (email, password) => {
     axios
-      .post("http://task-manager-web-app-production-08bb.up.railway.app/api/auth/login", { email, password })
+      .post(`${API}/api/auth/login`, { email, password })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         setUser({ token: res.data.token });
@@ -91,7 +91,7 @@ export default function App() {
   // 🆕 SIGNUP
   const handleSignup = (name, email, password) => {
   axios
-    .post("http://task-manager-web-app-production-08bb.up.railway.app/api/auth/register", { // ✅ FIXED URL
+    .post(`${API}/api/auth/register`, { // ✅ FIXED URL
       name,
       email,
       password,
